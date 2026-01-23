@@ -28,13 +28,10 @@ def transform(data: Dict[str, pd.DataFrame]) -> Dict[str, pd.DataFrame]:
 
     users_with_posts_df["total_posts"] = users_with_posts_df["total_posts"].fillna(0).astype(int)
 
-    # ----------------------------
     # 2. Comentários por post
-    # ----------------------------
     comments_per_post = (
         comments_df
         .groupby("postId")
-        .size()
         .reset_index(name="total_comments")
     )
 
